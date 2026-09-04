@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 spring:
   servlet:
@@ -13,7 +13,7 @@ reconsentinel:
   llm:
     api-key: ${GEMINI_API_KEY:}
     base-url: https://generativelanguage.googleapis.com/v1beta/openai/chat/completions
-    model: gemini-3.6-flash
+    model: gemini-2.5-flash
 
 logging:
   level:
