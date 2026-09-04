@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  application:
+    name: reconsentinel
+
+reconsentinel:
+  llm:
+    api-key: ${GEMINI_API_KEY:}
+    base-url: https://generativelanguage.googleapis.com/v1beta/openai/chat/completions
+    model: gemini-3.6-flash
+
+logging:
+  level:
+    com.reconsentinel: INFO

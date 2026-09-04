@@ -1,0 +1,258 @@
+@import "tailwindcss" source(none);
+@import "tw-animate-css";
+
+@source "../src";
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * ReconSentinel design system — dark-first fintech console.
+ * All colors are oklch semantic tokens. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-matched: var(--matched);
+  --color-matched-foreground: var(--matched-foreground);
+  --color-matched-soft: var(--matched-soft);
+  --color-exception: var(--exception);
+  --color-exception-foreground: var(--exception-foreground);
+  --color-exception-soft: var(--exception-soft);
+  --color-ai: var(--ai);
+  --color-ai-foreground: var(--ai-foreground);
+  --color-ai-soft: var(--ai-soft);
+  --color-missing: var(--missing);
+  --color-missing-soft: var(--missing-soft);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --shadow-glow-primary: 0 0 0 1px color-mix(in oklab, var(--primary) 45%, transparent),
+    0 12px 40px -12px color-mix(in oklab, var(--primary) 70%, transparent);
+  --shadow-panel: 0 24px 60px -32px oklch(0 0 0 / 0.9);
+}
+
+:root {
+  --radius: 0.5rem;
+  /* #0B0F17 deep slate */
+  --background: oklch(0.168 0.018 260);
+  --foreground: oklch(0.95 0.008 250);
+  --surface: oklch(0.203 0.019 260);
+  --surface-raised: oklch(0.232 0.021 260);
+  --card: oklch(0.203 0.019 260);
+  --card-foreground: oklch(0.95 0.008 250);
+  --popover: oklch(0.213 0.02 260);
+  --popover-foreground: oklch(0.95 0.008 250);
+  --primary: oklch(0.62 0.19 279);
+  --primary-foreground: oklch(0.98 0.005 260);
+  --secondary: oklch(0.262 0.022 260);
+  --secondary-foreground: oklch(0.93 0.008 250);
+  --muted: oklch(0.253 0.021 260);
+  --muted-foreground: oklch(0.68 0.023 256);
+  --accent: oklch(0.278 0.03 268);
+  --accent-foreground: oklch(0.95 0.008 250);
+  --destructive: oklch(0.62 0.2 20);
+  --destructive-foreground: oklch(0.98 0.005 260);
+  /* #1E293B crisp border */
+  --border: oklch(0.286 0.028 259);
+  --input: oklch(0.3 0.028 259);
+  --ring: oklch(0.62 0.19 279);
+  --matched: oklch(0.76 0.17 158);
+  --matched-foreground: oklch(0.2 0.05 158);
+  --matched-soft: oklch(0.76 0.17 158 / 0.12);
+  --exception: oklch(0.8 0.15 78);
+  --exception-foreground: oklch(0.22 0.05 78);
+  --exception-soft: oklch(0.8 0.15 78 / 0.12);
+  --ai: oklch(0.68 0.18 288);
+  --ai-foreground: oklch(0.99 0.005 288);
+  --ai-soft: oklch(0.68 0.18 288 / 0.14);
+  --missing: oklch(0.65 0.21 22);
+  --missing-soft: oklch(0.65 0.21 22 / 0.13);
+  --chart-1: oklch(0.76 0.17 158);
+  --chart-2: oklch(0.68 0.18 288);
+  --chart-3: oklch(0.8 0.15 78);
+  --chart-4: oklch(0.7 0.13 220);
+  --chart-5: oklch(0.62 0.19 279);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility grid-backdrop {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent 75%);
+}
+
+@utility num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+@utility pulse-dot {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 9999px;
+    background: currentColor;
+    opacity: 0.35;
+    animation: pulse-ring 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  70% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer-x {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@utility shimmer-bar {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 40%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--ai) 45%, transparent),
+      transparent
+    );
+    animation: shimmer-x 1.8s linear infinite;
+  }
+}
+
+/* --- Command Center upgrades --- */
+
+@utility glass-panel {
+  background: color-mix(in oklab, var(--surface) 70%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid color-mix(in oklab, var(--border) 90%, transparent);
+}
+
+@keyframes exception-glow {
+  0%,
+  100% {
+    box-shadow: inset 2px 0 0 0 var(--exception), 0 0 0 0 transparent;
+  }
+  50% {
+    box-shadow:
+      inset 2px 0 0 0 var(--exception),
+      0 0 18px -4px color-mix(in oklab, var(--exception) 60%, transparent);
+  }
+}
+
+@utility exception-pulse {
+  animation: exception-glow 2.4s ease-in-out infinite;
+}
+
+@keyframes scan-beam {
+  0% {
+    transform: translateY(-110%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(310%);
+    opacity: 0;
+  }
+}
+
+@utility scan-beam {
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    height: 34%;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      color-mix(in oklab, var(--ai) 30%, transparent),
+      transparent
+    );
+    animation: scan-beam 1.8s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
